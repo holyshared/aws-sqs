@@ -1,0 +1,22 @@
+{
+  "name": "aws-sqs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/holyshared/aws-sqs.git"
+  },
+  "author": "Noritaka Horio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/holyshared/aws-sqs/issues"
+  },
+  "homepage": "https://github.com/holyshared/aws-sqs#readme",
+  "dependencies": {
+    "aws-sdk": "^2.2.39"
+  }
+}
