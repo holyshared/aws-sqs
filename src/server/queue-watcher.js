@@ -29,6 +29,15 @@ QueueWatcher.prototype.onReceiveMessage = function (err, result) {
     return;
   }
 
+  this.execute(result.Messages);
+}
+
+QueueWatcher.prototype.execute = function (messages) {
+  this._action.execute(messages).then(function (result) {
+    console.log(result);
+  }).catch(function (err) {
+    console.log(err.stack);
+  });
 }
 
 QueueWatcher.prototype.listen = function (delay) {
