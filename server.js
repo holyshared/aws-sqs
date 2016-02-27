@@ -1,4 +1,4 @@
-var server = require('./server');
+var server = require('./src/server');
 var watcher = new server.QueueWatcher({
   url: process.env.QUEUE_URL
 }):
