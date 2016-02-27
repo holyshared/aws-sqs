@@ -5,6 +5,7 @@ var log4js = require('log4js');
 
 function Configration(config, env) {
   var enviroment = env || 'development';
+  var queue = config.queue || { watchInterval: 5000 };
   var loggers = config.loggers || [ { type: 'console' } ];
   var appenders = loggers.map(function (logger) {
     logger.category = enviroment;
@@ -14,6 +15,7 @@ function Configration(config, env) {
 
   this.enviroment = enviroment;
   this.logger = log4js.getLogger(this.enviroment);
+  this.queue = queue;
 }
 
 module.exports.Configration = Configration;

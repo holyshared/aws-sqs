@@ -1,3 +1,10 @@
+# ------------------------------
+# development
+# ------------------------------
+
+[development.queue]
+watchInterval = 5000
+
 [[development.loggers]]
 type = "console"
 
@@ -5,9 +12,23 @@ type = "console"
 type = "file"
 filename = "sqs.log"
 
+# ------------------------------
+# staging
+# ------------------------------
+
+[staging.queue]
+watchInterval = 5000
+
 [[staging.loggers]]
 type = "file"
 filename = "/var/log/sqs.log"
+
+# ------------------------------
+# production
+# ------------------------------
+
+[production.queue]
+watchInterval = 5000
 
 [[production.loggers]]
 type = "file"
