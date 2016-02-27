@@ -1,4 +1,4 @@
-var sqs = require('./sqs');
+var sqs = require('../sqs');
 var Promise = require('bluebird');
 
 function QueueWatcher(options) {
