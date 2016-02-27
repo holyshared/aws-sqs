@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/holyshared/aws-sqs#readme",
   "dependencies": {
-    "aws-sdk": "^2.2.39"
+    "aws-sdk": "^2.2.39",
+    "bluebird": "^3.3.3"
   }
 }
