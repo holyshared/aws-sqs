@@ -34,7 +34,7 @@ QueueAction.prototype.finish = function(message) {
   };
 
   return new Promise(function (resolve, reject) {
-    sql.deleteMessage(params, function (err, result) {
+    sqs.deleteMessage(params, function (err, result) {
       if (err) {
         return reject(err);
       }
@@ -48,7 +48,7 @@ QueueAction.prototype.execute = function (messages) {
 
   messages.forEach(function (message) {
     chain = chain.then(this.doAction(message));
-  });
+  }, this);
 
   return chain.then(function () {
     return {
