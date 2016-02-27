@@ -30,7 +30,7 @@ Queue.create = function () {
   var params = {
     QueueName: "MyQueue",
     Attributes: {
-      DelaySeconds: 1000
+      DelaySeconds: '900' //15
     }
   };
 
