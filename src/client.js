@@ -26,7 +26,7 @@ Queue.prototype.addMessage = function (body) {
   });
 };
 
-Queue.create = function () {
+module.exports = function () {
   var params = {
     QueueName: "MyQueue",
     Attributes: {
@@ -42,6 +42,4 @@ Queue.create = function () {
       resolve(new Queue(result));
     });
   });
-}
-
-module.exports = Queue;
+};

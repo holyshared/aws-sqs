@@ -1,6 +1,6 @@
-var Queue = require('./queue');
+var client = require('./client');
 
-Queue.create().then(function (queue) {
+client().then(function (queue) {
   console.log(queue);
 
   queue.addMessage('aa').then(function (res) {
