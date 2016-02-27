@@ -1,5 +1,6 @@
 var server = require('./src/server');
-var logger = require('./src/logger');
+var fromFile = require('./src/configration').fromFile;
+var config = fromFile('./server.toml');
 
 var watcher = new server.QueueWatcher({
   url: process.env.QUEUE_URL
@@ -8,7 +9,7 @@ var action = new server.QueueAction({
   url: process.env.QUEUE_URL
 });
 
-watcher.logger(logger)
+watcher.logger(config.logger)
   .action(action)
   .listen(5000);
 
