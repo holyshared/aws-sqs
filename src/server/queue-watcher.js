@@ -9,6 +9,12 @@ function QueueWatcher(options) {
   };
   this._watcher = this.receive.bind(this);
   this._receiver = this.onReceiveMessage.bind(this);
+  this._logger = console;
+}
+
+QueueWatcher.prototype.logger = function (logger) {
+  this._logger = logger;
+  return this;
 }
 
 QueueWatcher.prototype.action = function (action) {
@@ -22,12 +28,12 @@ QueueWatcher.prototype.receive = function () {
 
 QueueWatcher.prototype.onReceiveMessage = function (err, result) {
   if (err) {
-    console.log(err);
+    this._logger.error(err);
     return;
   }
 
   if (!result.Messages) {
-    console.log('no message');
+    this._logger.info('no message');
     return;
   }
 
@@ -36,13 +42,15 @@ QueueWatcher.prototype.onReceiveMessage = function (err, result) {
 
 QueueWatcher.prototype.execute = function (messages) {
   this._action.execute(messages).then(function (result) {
-    console.log(result);
+    this._logger.info(result);
   }).catch(function (err) {
-    console.log(err.stack);
+    this._logger.error(err);
   });
 }
 
 QueueWatcher.prototype.shutdown = function () {
+  this._logger.info('shutdown....');
+
   clearInterval(this._watcherId);
   this._watcher = null;
   this._receiver = null;
@@ -51,6 +59,7 @@ QueueWatcher.prototype.shutdown = function () {
 }
 
 QueueWatcher.prototype.listen = function (delay) {
+  this._logger.info('listen....');
   this._watcherId = setInterval(this._watcher, delay);
 }
 
