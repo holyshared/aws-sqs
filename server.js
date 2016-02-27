@@ -11,7 +11,7 @@ var action = new server.QueueAction({
 
 watcher.logger(config.logger)
   .action(action)
-  .listen(5000);
+  .listen(config.watchInterval);
 
 function shutdown(sig) {
   watcher.shutdown().then(function () {

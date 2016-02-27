@@ -15,7 +15,7 @@ function Configration(config, env) {
 
   this.enviroment = enviroment;
   this.logger = log4js.getLogger(this.enviroment);
-  this.queue = queue;
+  this.watchInterval = queue.watchInterval;
 }
 
 module.exports.Configration = Configration;
