@@ -2,10 +2,12 @@ var sqs = require('./sqs');
 var Promise = require('bluebird');
 
 function QueueWatcher(options) {
+  this._watcherId = null;
   this._options = options;
   this._receiveOptions = {
     QueueUrl: this._options.url
   };
+  this._watcher = this.receive.bind(this);
   this._receiver = this.onReceiveMessage.bind(this);
 }
 
@@ -40,8 +42,16 @@ QueueWatcher.prototype.execute = function (messages) {
   });
 }
 
+QueueWatcher.prototype.shutdown = function () {
+  clearInterval(this._watcherId);
+  this._watcher = null;
+  this._receiver = null;
+
+  return Promise.resolve();
+}
+
 QueueWatcher.prototype.listen = function (delay) {
-  setInterval(this.receive.bind(this), delay);
+  this._watcherId = setInterval(this._watcher, delay);
 }
 
 module.exports = QueueWatcher;
