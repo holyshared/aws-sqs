@@ -1,13 +1,14 @@
 [[development.loggers]]
 type = "console"
-category = "development"
+
+[[development.loggers]]
+type = "file"
+filename = "sqs.log"
 
 [[staging.loggers]]
 type = "file"
 filename = "/var/log/sqs.log"
-staging = "development"
 
 [[production.loggers]]
 type = "file"
 filename = "/var/log/sqs.log"
-production = "development"
