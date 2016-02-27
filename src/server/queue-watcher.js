@@ -41,6 +41,8 @@ QueueWatcher.prototype.onReceiveMessage = function (err, result) {
 }
 
 QueueWatcher.prototype.execute = function (messages) {
+  this._logger.info('start queue action');
+
   this._action.execute(messages).then(function (result) {
     this._logger.info(result);
   }).catch(function (err) {
