@@ -1,5 +1,5 @@
 var path = require('path');
-var server = require('./src');
+var server = require('./lib');
 var fromFile = server.fromFile;
 var env = process.env.NODE_ENV || 'development';
 var config = fromFile(path.resolve(process.cwd(), 'conf', env + '.toml'));

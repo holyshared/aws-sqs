@@ -1,4 +1,7 @@
-module.exports = {
-  QueueWatcher: require('./queue-watcher'),
-  QueueAction: require('./queue-action')
+import Watcher from './queue-watcher';
+import Action from './queue-action';
+
+export default {
+  QueueWatcher: Watcher,
+  QueueAction: Action
 };

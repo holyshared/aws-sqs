@@ -1,27 +1,35 @@
-require('toml-require').install();
+import loader from 'toml-require';
 
-var path = require('path');
-var log4js = require('log4js');
+loader.install();
 
-function Configration(config, env) {
-  var enviroment = env || 'development';
-  var queue = config.queue || { watchInterval: 5000 };
-  var loggers = config.loggers || [ { type: 'console' } ];
-  var appenders = loggers.map(function (logger) {
-    logger.category = enviroment;
-    return logger;
-  });
-  log4js.configure({ appenders: appenders });
+import path from 'path';
+import log4js from 'log4js';
 
-  this.enviroment = enviroment;
-  this.logger = log4js.getLogger(this.enviroment);
-  this.watchInterval = queue.watchInterval;
+export default {
+  Configration: Configration,
+  fromFile: fromFile
 }
 
-module.exports.Configration = Configration;
-module.exports.fromFile = function (tomlFile) {
-  var env = tomlFile.replace(/.+\/(\w+)\.toml$/, '$1');
-  var config = require(tomlFile);
+class Configration {
+  constructor(config, env) {
+    const enviroment = env || 'development';
+    const queue = config.queue || { watchInterval: 5000 };
+    const loggers = config.loggers || [ { type: 'console' } ];
+    const appenders = loggers.map(function (logger) {
+      logger.category = enviroment;
+      return logger;
+    });
+    log4js.configure({ appenders: appenders });
+
+    this.enviroment = enviroment;
+    this.logger = log4js.getLogger(this.enviroment);
+    this.watchInterval = queue.watchInterval;
+  }
+}
+
+function fromFile(tomlFile) {
+  const env = tomlFile.replace(/.+\/(\w+)\.toml$/, '$1');
+  const config = require(tomlFile);
 
   return new Configration(config || {}, env);
 }

@@ -1,11 +1,9 @@
-var server = require('./server');
-var conf = require('./configration');
-var sqs = require('./sqs');
+import server from './server';
+import conf from './configration';
+import sqs from './sqs';
 
-module.exports = {
-  QueueAction: server.QueueAction,
-  QueueWatcher: server.QueueWatcher,
-  Configration: conf.Configration,
-  fromFile: conf.fromFile,
-  client: sqs
-};
+export const QueueAction = server.QueueAction;
+export const QueueWatcher = server.QueueWatcher;
+export const Configration = conf.Configration;
+export const fromFile = conf.fromFile;
+export const client = sqs;
