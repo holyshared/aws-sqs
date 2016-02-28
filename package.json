@@ -2,9 +2,11 @@
   "name": "aws-sqs",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": ""
+    "test": "istanbul cover _mocha",
+    "build": "./node_modules/.bin/babel -d lib -s inline src",
+    "watch": "./node_modules/.bin/babel -d lib -s inline -w src"
   },
   "repository": {
     "type": "git",
