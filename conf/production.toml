@@ -8,3 +8,4 @@ watchInterval = 5000
 [[loggers]]
 type = "file"
 filename = "/var/log/sqs.log"
+layout = { type = "pattern", pattern = "%d{ISO8601_WITH_TZ_OFFSET} %h [%p] - %m" }
