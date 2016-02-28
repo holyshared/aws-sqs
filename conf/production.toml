@@ -1,0 +1,10 @@
+# ------------------------------
+# production
+# ------------------------------
+
+[queue]
+watchInterval = 5000
+
+[[loggers]]
+type = "file"
+filename = "/var/log/sqs.log"

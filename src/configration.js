@@ -19,10 +19,9 @@ function Configration(config, env) {
 }
 
 module.exports.Configration = Configration;
-module.exports.fromFile = function (tomlPath) {
-  var env = process.env.NODE_ENV || 'development';
-  var absPath = path.resolve(process.cwd(), tomlPath);
-  var config = require(absPath);
+module.exports.fromFile = function (tomlFile) {
+  var env = tomlFile.replace(/.+\/(\w+)\.toml$/, '$1');
+  var config = require(tomlFile);
 
-  return new Configration(config[env] || {}, env);
+  return new Configration(config || {}, env);
 }

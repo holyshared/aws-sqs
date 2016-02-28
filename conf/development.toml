@@ -1,0 +1,13 @@
+# ------------------------------
+# development
+# ------------------------------
+
+[queue]
+watchInterval = 5000
+
+[[loggers]]
+type = "console"
+
+[[loggers]]
+type = "file"
+filename = "sqs.log"

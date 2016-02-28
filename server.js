@@ -1,6 +1,8 @@
+var path = require('path');
 var server = require('./src/server');
 var fromFile = require('./src/configration').fromFile;
-var config = fromFile('./server.toml');
+var env = process.env.NODE_ENV || 'development';
+var config = fromFile(path.resolve(process.cwd(), 'conf', env + '.toml'));
 
 var watcher = new server.QueueWatcher({
   url: process.env.QUEUE_URL
