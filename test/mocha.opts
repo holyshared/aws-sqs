@@ -1,0 +1,3 @@
+-R dot
+--recursive
+--compilers js:espower-babel/guess
